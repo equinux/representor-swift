@@ -36,7 +36,7 @@ public struct Representor<Transition : TransitionType> : Equatable, Hashable {
   }
 
   /// An extension to Representor to provide a builder interface for creating a Representor.
-  public init(_ block:((builder:Builder) -> ())) {
+  public init(_ block:((_ builder:Builder) -> ())) {
     // This should belong in an extension, but due to a bug in the symbol
     // mangler in the Swift compiler it results in the symbol being incorrectly
     // mangled when being used from an extension.
@@ -44,7 +44,7 @@ public struct Representor<Transition : TransitionType> : Equatable, Hashable {
     // Swift ¯\_(ツ)_/¯
     let builder = Builder()
 
-    block(builder:builder)
+    block(builder)
 
     self.transitions = builder.transitions
     self.representors = builder.representors

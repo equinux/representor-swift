@@ -41,7 +41,7 @@ public protocol TransitionType : Equatable, Hashable {
   associatedtype Builder = TransitionBuilderType
 
   init(uri:String, attributes:InputProperties?, parameters:InputProperties?)
-  init(uri:String, _ block:((builder:Builder) -> ()))
+  init(uri:String, _ block:((_ builder:Builder) -> ()))
 
   var uri:String { get }
 

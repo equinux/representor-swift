@@ -9,6 +9,26 @@
 import Foundation
 import XCTest
 import Representor
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class SirenAdapterTests: XCTestCase {
   let representation = ["actions":
@@ -32,8 +52,8 @@ class SirenAdapterTests: XCTestCase {
     builder.suggestedContentTypes = ["application/x-www-form-urlencoded"]
 
     builder.addAttribute("username")
-    builder.addAttribute("first_name", title: "First Name", value: "John", defaultValue: nil)
-    builder.addAttribute("last_name", title: "Last Name", value: "Doe", defaultValue: nil)
+    builder.addAttribute("first_name", title: "First Name", value: "John" as AnyObject?, defaultValue: nil)
+    builder.addAttribute("last_name", title: "Last Name", value: "Doe" as AnyObject?, defaultValue: nil)
   }
 
   func fixture() -> [String:AnyObject] {
@@ -55,7 +75,7 @@ class SirenAdapterTests: XCTestCase {
   }
 
   func testConversionFromSirenWithAction() {
-    let representor = deserializeSiren(representation)
+    let representor = deserializeSiren(representation as [String : AnyObject])
     XCTAssertEqual(representor.transitions["register"]!, [transition])
   }
 
@@ -67,7 +87,7 @@ class SirenAdapterTests: XCTestCase {
     let actions = serializeSiren(representor)["actions"] as! [[String:AnyObject]]
     let action = actions[0]
     let fields = action["fields"] as! [[String:String]]
-    let sortedFields = fields.sort { (lhs, rhs) in
+    let sortedFields = fields.sorted { (lhs, rhs) in
       lhs["name"] > rhs["name"]
     }
 
@@ -75,10 +95,8 @@ class SirenAdapterTests: XCTestCase {
     XCTAssertEqual(action["href"] as? String, "/register/")
     XCTAssertEqual(action["method"] as? String, "PATCH")
     XCTAssertEqual(action["type"] as? String, "application/x-www-form-urlencoded")
-    XCTAssertEqual(sortedFields, [
-      ["name": "username"],
-      ["title": "Last Name", "name": "last_name", "value": "Doe"],
-      ["title": "First Name", "name": "first_name", "value": "John"],
-    ])
+    XCTAssertEqual(sortedFields[0], ["name": "username"])
+    XCTAssertEqual(sortedFields[1], ["title": "Last Name", "name": "last_name", "value": "Doe"])
+    XCTAssertEqual(sortedFields[2], ["title": "First Name", "name": "first_name", "value": "John"])
   }
 }

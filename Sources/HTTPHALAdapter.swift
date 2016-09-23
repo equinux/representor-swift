@@ -14,19 +14,19 @@ private let AllowedHALLinkOptions = [
   "name", "profile", "title", "hreflang"
 ]
 
-private func parseHALLinkAttributes(options: [String:AnyObject], builder: HTTPTransitionBuilder) {
+private func parseHALLinkAttributes(_ options: [String:AnyObject], builder: HTTPTransitionBuilder) {
   for (key, value) in options {
     guard AllowedHALLinkOptions.contains(key) else { continue }
     builder.addAttribute(key, title: nil, value: value, defaultValue: nil, required: nil)
   }
 }
 
-func parseHALLinks(halLinks:[String:AnyObject]) -> [String:[HTTPTransition]] {
+func parseHALLinks(_ halLinks:[String:AnyObject]) -> [String:[HTTPTransition]] {
   var links = [String:[HTTPTransition]]()
 
   for (relation, options) in halLinks {
     if let options = options as? [String:AnyObject],
-           href = options["href"] as? String
+           let href = options["href"] as? String
     {
       let transition = HTTPTransition(uri: href, { (builder) in
         parseHALLinkAttributes(options, builder: builder)
@@ -51,10 +51,10 @@ func parseHALLinks(halLinks:[String:AnyObject]) -> [String:[HTTPTransition]] {
 }
 
 
-func parseEmbeddedHALs(embeddedHALs:[String:AnyObject]) -> [String:[Representor<HTTPTransition>]] {
+func parseEmbeddedHALs(_ embeddedHALs:[String:AnyObject]) -> [String:[Representor<HTTPTransition>]] {
   var representors = [String:[Representor<HTTPTransition>]]()
 
-  func parseEmbedded(embedded:[String:AnyObject]) -> Representor<HTTPTransition> {
+  func parseEmbedded(_ embedded:[String:AnyObject]) -> Representor<HTTPTransition> {
     return deserializeHAL(embedded)
   }
 
@@ -70,16 +70,16 @@ func parseEmbeddedHALs(embeddedHALs:[String:AnyObject]) -> [String:[Representor<
 }
 
 /// A function to deserialize a HAL structure into a HTTP Transition.
-public func deserializeHAL(hal:[String:AnyObject]) -> Representor<HTTPTransition> {
+public func deserializeHAL(_ hal:[String:AnyObject]) -> Representor<HTTPTransition> {
   var hal = hal
 
   var links = [String:[HTTPTransition]]()
-  if let halLinks = hal.removeValueForKey("_links") as? [String:AnyObject] {
+  if let halLinks = hal.removeValue(forKey: "_links") as? [String:AnyObject] {
     links = parseHALLinks(halLinks)
   }
 
   var representors = [String:[Representor<HTTPTransition>]]()
-  if let embedded = hal.removeValueForKey("_embedded") as? [String:AnyObject] {
+  if let embedded = hal.removeValue(forKey: "_embedded") as? [String:AnyObject] {
     representors = parseEmbeddedHALs(embedded)
   }
 
@@ -87,7 +87,7 @@ public func deserializeHAL(hal:[String:AnyObject]) -> Representor<HTTPTransition
 }
 
 /// A function to serialize a HTTP Representor into a Siren structure
-public func serializeHAL(representor:Representor<HTTPTransition>) -> [String:AnyObject] {
+public func serializeHAL(_ representor:Representor<HTTPTransition>) -> [String:AnyObject] {
   var representation = representor.attributes
 
   if !representor.transitions.isEmpty {
@@ -95,15 +95,15 @@ public func serializeHAL(representor:Representor<HTTPTransition>) -> [String:Any
 
     for (relation, transitions) in representor.transitions {
       if transitions.count == 1 {
-        links[relation] = ["href": transitions[0].uri]
+        links[relation] = ["href": transitions[0].uri as AnyObject] as AnyObject
       } else {
         links[relation] = transitions.map {
           ["href": $0.uri]
-        }
+        } as AnyObject
       }
     }
 
-    representation["_links"] = links
+    representation["_links"] = links as AnyObject?
   }
 
   if !representor.representors.isEmpty {
@@ -113,7 +113,7 @@ public func serializeHAL(representor:Representor<HTTPTransition>) -> [String:Any
       embeddedHALs[name] = representorSet.map(serializeHAL)
     }
 
-    representation["_embedded"] = embeddedHALs
+    representation["_embedded"] = embeddedHALs as AnyObject?
   }
 
   return representation

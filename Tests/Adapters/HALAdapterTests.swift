@@ -38,7 +38,7 @@ class HALAdapterTests: XCTestCase {
         ]
       ]
     ]
-    let representor = deserializeHAL(representation)
+    let representor = deserializeHAL(representation as [String : AnyObject])
 
     XCTAssertEqual(representor.transitions["items"]?.count, 2)
   }
