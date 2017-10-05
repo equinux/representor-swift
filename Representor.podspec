@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'Representor'
-  spec.version = '4.0.0'
+  spec.version = '4.0.1'
   spec.summary = 'A canonical resource object interface in Swift.'
   spec.homepage = 'https://github.com/equinux/representor-swift'
   spec.license = { :type => 'MIT', :file => 'LICENSE' }
