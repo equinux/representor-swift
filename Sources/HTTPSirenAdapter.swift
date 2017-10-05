@@ -32,7 +32,7 @@ private func sirenActionToTransition(_ action: [String: Any]) -> (name: String, 
         }
 
         if let fields = action["fields"] as? [[String: Any]] {
-          fields.forEach(sirenFieldToAttribute(builder))
+          fields.forEach({ sirenFieldToAttribute(builder)($0) })
         }
       }
 

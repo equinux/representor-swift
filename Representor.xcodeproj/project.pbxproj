@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DA314571F86967800E3FD4F /* link-objects.hal.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DA314561F86966900E3FD4F /* link-objects.hal.json */; };
 		271629B71C4011D40027A90C /* RepresentorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629B51C4011D40027A90C /* RepresentorBuilder.swift */; };
 		271629B81C4011D40027A90C /* TransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629B61C4011D40027A90C /* TransitionBuilder.swift */; };
 		271629C51C4012C30027A90C /* HTTPDeserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629C21C4012C30027A90C /* HTTPDeserialization.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DA314561F86966900E3FD4F /* link-objects.hal.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "link-objects.hal.json"; sourceTree = "<group>"; };
 		271629B51C4011D40027A90C /* RepresentorBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepresentorBuilder.swift; sourceTree = "<group>"; };
 		271629B61C4011D40027A90C /* TransitionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionBuilder.swift; sourceTree = "<group>"; };
 		271629B91C40125A0027A90C /* HTTPHALAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPHALAdapter.swift; path = Sources/HTTPHALAdapter.swift; sourceTree = SOURCE_ROOT; };
@@ -251,6 +253,7 @@
 				276A2C071A7BA500004BCC6F /* blueprint.json */,
 				77F592341A1B6E1B0070F839 /* poll.hal.json */,
 				77F592351A1B6E1B0070F839 /* poll.siren.json */,
+				0DA314561F86966900E3FD4F /* link-objects.hal.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77F592371A1B6E1B0070F839 /* poll.hal.json in Resources */,
+				0DA314571F86967800E3FD4F /* link-objects.hal.json in Resources */,
 				77F592381A1B6E1B0070F839 /* poll.siren.json in Resources */,
 				276A2C081A7BA500004BCC6F /* blueprint.json in Resources */,
 			);
