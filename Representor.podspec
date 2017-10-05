@@ -1,12 +1,12 @@
 Pod::Spec.new do |spec|
   spec.name = 'Representor'
-  spec.version = '0.8.0'
+  spec.version = '4.0.0'
   spec.summary = 'A canonical resource object interface in Swift.'
-  spec.homepage = 'https://github.com/the-hypermedia-project/representor-swift'
+  spec.homepage = 'https://github.com/equinux/representor-swift.git'
   spec.license = { :type => 'MIT', :file => 'LICENSE' }
   spec.author = { 'Kyle Fuller' => 'kyle@fuller.li' }
   spec.social_media_url = 'http://twitter.com/kylefuller'
-  spec.source = { :git => 'https://github.com/the-hypermedia-project/representor-swift.git', :tag => "#{spec.version}" }
+  spec.source = { :git => 'https://github.com/equinux/representor-swift.git.git', :tag => "#{spec.version}" }
   spec.requires_arc = true
   spec.ios.deployment_target = '8.0'
   spec.osx.deployment_target = '10.9'
