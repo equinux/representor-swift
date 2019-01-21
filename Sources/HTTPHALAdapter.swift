@@ -33,7 +33,7 @@ func parseHALLinks(_ halLinks: [String: AnyObject]) -> [String: [HTTPTransition]
       })
       links[relation] = [transition]
     } else if let options = options as? [[String: AnyObject]] {
-      links[relation] = options.flatMap {
+      links[relation] = options.compactMap {
         let transitionOptions = $0
         if let href = $0["href"] as? String {
           let transition = HTTPTransition(uri: href, { (builder) in

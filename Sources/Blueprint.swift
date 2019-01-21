@@ -234,7 +234,7 @@ public struct Payload {
 
 func parseMetadata(_ source:[[String:String]]?) -> [Metadata] {
   if let source = source {
-    return source.flatMap { item in
+    return source.compactMap { item in
       if let name = item["name"] {
         if let value = item["value"] {
           return (name: name, value: value)
@@ -267,7 +267,7 @@ func parseParameter(_ source:[[String:AnyObject]]?) -> [Parameter] {
 
 func parseActions(_ source:[[String:AnyObject]]?) -> [Action] {
   if let source = source {
-    return source.flatMap { item in
+    return source.compactMap { item in
       let name = item["name"] as? String
       let description = item["description"] as? String
       let method = item["method"] as? String
@@ -293,7 +293,7 @@ func parseActions(_ source:[[String:AnyObject]]?) -> [Action] {
 
 func parseExamples(_ source:[[String:AnyObject]]?) -> [TransactionExample] {
   if let source = source {
-    return source.flatMap { item in
+    return source.compactMap { item in
       let name = item["name"] as? String
       let description = item["description"] as? String
       let requests = parsePayloads(item["requests"] as? [[String:AnyObject]])
@@ -312,7 +312,7 @@ func parseExamples(_ source:[[String:AnyObject]]?) -> [TransactionExample] {
 
 func parsePayloads(_ source:[[String:AnyObject]]?) -> [Payload] {
   if let source = source {
-    return source.flatMap { item in
+    return source.compactMap { item in
       let name = item["name"] as? String
       let description = item["description"] as? String
       let headers = parseHeaders(item["headers"] as? [[String:String]])
@@ -333,7 +333,7 @@ func parsePayloads(_ source:[[String:AnyObject]]?) -> [Payload] {
 
 func parseHeaders(_ source:[[String:String]]?) -> [Payload.Header] {
   if let source = source {
-    return source.flatMap { item in
+    return source.compactMap { item in
       if let name = item["name"], let value = item["value"] {
         return (name, value)
       }
@@ -347,7 +347,7 @@ func parseHeaders(_ source:[[String:String]]?) -> [Payload.Header] {
 
 func parseResources(_ source:[[String:AnyObject]]?) -> [Resource] {
   if let source = source {
-    return source.flatMap { item in
+    return source.compactMap { item in
       let name = item["name"] as? String
       let description = item["description"] as? String
       let uriTemplate = item["uriTemplate"] as? String
@@ -368,7 +368,7 @@ func parseResources(_ source:[[String:AnyObject]]?) -> [Resource] {
 
 private func parseBlueprintResourceGroups(_ blueprint:[String:AnyObject]) -> [ResourceGroup] {
   if let resourceGroups = blueprint["resourceGroups"] as? [[String:AnyObject]] {
-    return resourceGroups.flatMap { dictionary in
+    return resourceGroups.compactMap { dictionary in
       if let name = dictionary["name"] as? String {
         let resources = parseResources(dictionary["resources"] as? [[String:AnyObject]])
         let description = dictionary["description"] as? String

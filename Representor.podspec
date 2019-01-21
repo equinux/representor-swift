@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'Representor'
-  spec.version = '4.0.1'
+  spec.version = '4.0.2'
   spec.summary = 'A canonical resource object interface in Swift.'
   spec.homepage = 'https://github.com/equinux/representor-swift'
   spec.license = { :type => 'MIT', :file => 'LICENSE' }
@@ -13,4 +13,6 @@ Pod::Spec.new do |spec|
   spec.watchos.deployment_target = '2.0'
   spec.tvos.deployment_target = '9.0'
   spec.source_files = 'Sources/*.{swift,h}'
+
+  spec.swift_version = '4.2'
 end

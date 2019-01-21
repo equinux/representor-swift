@@ -34,6 +34,7 @@
 		77F592371A1B6E1B0070F839 /* poll.hal.json in Resources */ = {isa = PBXBuildFile; fileRef = 77F592341A1B6E1B0070F839 /* poll.hal.json */; };
 		77F592381A1B6E1B0070F839 /* poll.siren.json in Resources */ = {isa = PBXBuildFile; fileRef = 77F592351A1B6E1B0070F839 /* poll.siren.json */; };
 		77F5923A1A1B6F930070F839 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F592391A1B6F930070F839 /* Utils.swift */; };
+		86717A4221F5D88A00C9427B /* Representor.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 86717A4121F5D88A00C9427B /* Representor.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		77F592341A1B6E1B0070F839 /* poll.hal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = poll.hal.json; sourceTree = "<group>"; };
 		77F592351A1B6E1B0070F839 /* poll.siren.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = poll.siren.json; sourceTree = "<group>"; };
 		77F592391A1B6F930070F839 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		86717A4121F5D88A00C9427B /* Representor.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Representor.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 		770834591A0913860008869E = {
 			isa = PBXGroup;
 			children = (
+				86717A4121F5D88A00C9427B /* Representor.podspec */,
 				770834651A0913860008869E /* Representor */,
 				770834721A0913860008869E /* RepresentorTests */,
 				279294951A488A24009C52E1 /* Configurations */,
@@ -316,7 +319,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Apiary;
 				TargetAttributes = {
 					770834621A0913860008869E = {
@@ -352,6 +355,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86717A4221F5D88A00C9427B /* Representor.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,12 +431,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -481,12 +487,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
